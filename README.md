@@ -19,6 +19,8 @@ Pengembangan sebuah aplikasi web tanpa _virtual environment_ tetap bisa dilakuka
 
 ## Pengimplementasian aplikasi
 
+Sebelum memulai, dinyalakan terlebih dahulu _virtual environment_ pada direktori project yang akan dikerjakan dan juga install requirements yang dibutuhkan project. Setelah itu, karena ```models.py``` sudah disediakan, dilakukan juga _migration_ untuk memuat model ke database Django lokal. Lalu, load juga data barang yang ada pada ```initial_catalog_data.json``` ke database Django lokal. Barulah diisi file-file yang rumpang.
+
 ### ```views.py```
 
 File ini saya isi dengan fungsi ```show_catalog``` yang menerima parameter request dan mengembalikan fungsi render yang berfungsi untuk menampilkan html berisi data yang telah diambil pada fungsi dan disimpan di variabel ```data_katalog_item```.
@@ -71,6 +73,10 @@ Pada file ini, ditambahkan sebuah loop dalam _table_ yang mengiterasi variabel `
 ...
 ```
 
+### _Deployment_
+
+Proses ini sama seperti pada tutorial, yaitu melakukan ```git add```, ```git commit```, lalu ```git push``` untuk men- _deploy_ project ke repository github dan agar bisa dibuka di web browser melalui Heroku.
+ 
 ##### _Rayhan Putra Randi | 2106705644 | PBP-A_
 
 ###### _sources_:
