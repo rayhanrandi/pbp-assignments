@@ -75,7 +75,7 @@ Pada file ini, ditambahkan sebuah loop dalam _table_ yang mengiterasi variabel `
 
 ### _Deployment_
 
-Proses ini sama seperti pada tutorial, yaitu melakukan ```git add```, ```git commit```, lalu ```git push``` untuk men- _deploy_ project ke repository github dan agar bisa dibuka di web browser melalui Heroku.
+Proses ini sama seperti pada tutorial, yaitu melakukan ```git add```, ```git commit```, lalu ```git push``` untuk men- _deploy_ project ke repository github. Pada github, atur juga API key dan nama aplikasi yang ingin di deploy agar aplikasi bisa dibuka di web browser melalui Heroku.
  
 ##### _Rayhan Putra Randi | 2106705644 | PBP-A_
 
