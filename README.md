@@ -81,4 +81,5 @@ Proses ini sama seperti pada tutorial, yaitu melakukan ```git add```, ```git com
 
 ###### _sources_:
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Home_page
+
 https://www.javatpoint.com/django-virtual-environment-setup#:~:text=The%20virtual%20environment%20is%20an,create%20an%20isolated%20Python%20environment
