@@ -21,9 +21,8 @@ class CatalogTestCase(TestCase):
             item_url='https://github.com/rayhanrandi/pbp-assignments'
         )
     
-    def test_if_item_exists(self):
+    def test_if_item_equal(self):
         test = CatalogItem.objects.get(item_name='Test')
         goat = CatalogItem.objects.get(item_name='Pessi')
         self.assertEqual(test.item_name, 'Test')
         self.assertEqual(goat.item_name, 'Pessi')
-        
