@@ -23,7 +23,7 @@ Sebelum memulai, dinyalakan terlebih dahulu _virtual environment_ pada direktori
 
 ### ```views.py```
 
-File ini saya isi dengan fungsi ```show_catalog``` yang menerima parameter request dan mengembalikan fungsi render yang berfungsi untuk menampilkan html berisi data yang telah diambil pada fungsi dan disimpan di variabel ```data_katalog_item```.
+File ini saya isi dengan fungsi ```show_catalog``` yang menerima parameter request dan mengembalikan fungsi render yang berfungsi untuk menampilkan html berisi data yang telah diambil pada fungsi dan disimpan di variabel ```data_barang_catalog```.
 
 ```
 ...
