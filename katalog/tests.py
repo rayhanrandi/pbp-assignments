@@ -26,3 +26,4 @@ class CatalogTestCase(TestCase):
         goat = CatalogItem.objects.get(item_name='Pessi')
         self.assertEqual(test.item_name, 'Test')
         self.assertEqual(goat.item_name, 'Pessi')
+        
