@@ -1,0 +1,113 @@
+[
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 1,
+        "fields": {
+            "watched": "\u2713",
+            "title": "Perfect Blue",
+            "rating": 8,
+            "release_date": "28 February 1998",
+            "review": "Dreaming of real fame comes at a cost."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 2,
+        "fields": {
+            "watched": "\u2713",
+            "title": "Wall-E",
+            "rating": 8,
+            "release_date": "13 August 2008",
+            "review": "A Most Endearing Love Story In Space...And Back"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 3,
+        "fields": {
+            "watched": "\u2713",
+            "title": "Satan's Slaves",
+            "rating": 6,
+            "release_date": "28 September 2017",
+            "review": "Indonesia Brings Its A-Game."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 4,
+        "fields": {
+            "watched": "\u2713",
+            "title": "Monsters, Inc.",
+            "rating": 8,
+            "release_date": "2 November 2001",
+            "review": "Adorable movie with top class entertainment."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 5,
+        "fields": {
+            "watched": "\u2713",
+            "title": "Top Gun: Maverick",
+            "rating": 8,
+            "release_date": "27 May 2022",
+            "review": "Topped and Outgunned the Original."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 6,
+        "fields": {
+            "watched": "\u2715",
+            "title": "Paprika",
+            "rating": 7,
+            "release_date": "25 November 2006",
+            "review": "A surreal and entertaining exploration of dreams..."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 7,
+        "fields": {
+            "watched": "\u2713",
+            "title": "The Dictator",
+            "rating": 6,
+            "release_date": "16 May 2014",
+            "review": "Very Aladeen!"
+        } 
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 8,
+        "fields": {
+            "watched": "\u2715",
+            "title": "Borat: Cultural Learnings of America for Make Benefit Glorious Nation of Kazakhstan",
+            "rating": 6,
+            "release_date": "2 November 2006",
+            "review": "America through the eyes of a Kazakh."
+        }  
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 9,
+        "fields": {
+            "watched": "\u2713",
+            "title": "Akira",
+            "rating": 9,
+            "release_date": "10 July 1988",
+            "review": "Landmark Japanese animation that opens boundaries and minds."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 10,
+        "fields": {
+            "watched": "\u2713",
+            "title": "Initial D: Final Stage",
+            "rating": 8,
+            "release_date": "16 May 2014",
+            "review": "A must watch even if you're not an anime freak."
+        }
+    }
+
+]
