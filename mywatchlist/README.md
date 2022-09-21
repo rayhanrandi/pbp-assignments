@@ -30,13 +30,13 @@ Terakhir, untuk unit testing dilakukan dengan mengisi file ```tests.py``` dengan
 ## Preview aplikasi setelah _deployment_
 
 ##### HTML
-![HTML](mywatchlist/postmanhtml.jpg)
+![HTML](postmanhtml.jpg)
 
 ##### XML
-![XML](mywatchlist/postmanxml.jpg)
+![XML](postmanxml.jpg)
 
 ##### JSON
-![JSON](mywatchlist/postmanjson.jpg)
+![JSON](postmanjson.jpg)
 
 
 ##### _Rayhan Putra Randi | 2106705644 | PBP-A_
