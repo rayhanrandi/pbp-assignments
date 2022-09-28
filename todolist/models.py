@@ -5,10 +5,15 @@ from django.contrib.auth.models import User
 class Task(models.Model):
     user = models.ForeignKey(
         User,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
         )
     date = models.DateField(auto_now_add=True)
     title = models.CharField(max_length=255)
     description = models.TextField()
-    is_finished = models.BooleanField(default=False)
-    
+    is_finished = models.BooleanField(
+        default=False,
+        null=True,
+        blank=True
+        )
