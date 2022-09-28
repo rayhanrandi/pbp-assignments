@@ -12,3 +12,4 @@ urlpatterns = [
     path('toggle-task/<int:id>', task_toggle, name='toggle_task'),
     path('delete-task/<int:id>', task_delete, name='delete_task'),
 ]
+
