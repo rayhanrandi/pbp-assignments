@@ -141,4 +141,11 @@ Untuk app ini, dilakukan styling pada template-template yang digunakan oleh apli
 
 Selain itu, masih banyak lagi modifikasi yang dapat dilakukan terhadap _cards_ tadi. Namun secara garis besar, tugas ini dapat diselesaikan dengan mengimplementasikan _cards_ sesuai contoh diatas dan menyesuaikan isinya dengan elemen-elemen yang ingin ditampilkan kepada user serta modifikasi-modifikasinya yang memanfaatkan class dan juga id dari sebuah elemen serta berbagai macam selector juga yang dapat diletakkan dalam file dengan ```<style>``` atau juga menggunakan file CSS eksternal seperti yang telah dijelaskan pada no. 1.
 
+
+##### source:
+##### https://www.hostinger.co.id/tutorial/perbedaan-inline-css-external-css-dan-internal-css
+##### https://www.tutorialrepublic.com/html-reference/html5-tags.php
+##### https://www.w3schools.com/cssref/css_selectors.asp
+##### https://webdesign.tutsplus.com/tutorials/horizontal-scrolling-card-ui-flexbox-and-css-grid--cms-41922
+    
 ##### _Rayhan Putra Randi | 2106705644 | PBP-A_
