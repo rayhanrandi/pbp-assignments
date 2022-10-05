@@ -1,6 +1,6 @@
 # README
 
-### Link Aplikasi Heroku: [Todolist](http://pbp-assignments-todolist.herokuapp.com/todolist/)
+### Link Aplikasi Heroku: [Todolist](http://pbp-assignment4.herokuapp.com/todolist/)
 
 ## 1. ```{% csrf_token %}```
 
