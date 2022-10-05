@@ -5,78 +5,221 @@
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js%22%3E"></script>
 
-  <style>
-  h1, h5, p {text-align: center; color: rgb(255, 255, 255);}
-  th {text-align: center;}
-  tr {background-color: rgba(0,0,0,0.75);}
-  div {text-align: center;}
-  table, th, td {
-    border: 1px solid rgb(255, 255, 255);
-    table-layout: fixed;
-    text-align: center;
-    word-break: break-all
+<style>
+  
+:root {
+  --blue: #2360ef;
+  --purple: #3700a5;
+  --platinum: #e5e5e5;
+  --black: #2b2d42;
+  --whitealpha: rgba(255, 255, 255, 0.2);
+  --white : #fff;
+  --thumb: #edf2f4;
+}
+
+h3 {
+  font-weight: bold;
+}
+
+h5 {
+  text-align: center;
+  color: white;
+}
+
+a:link {
+  color: var(--white);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--white);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--white);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font: 16px / 24px "Rubik", sans-serif;
+  color: var(--black);
+  background: var(--platinum);
+  margin: 50px 0;
+}
+
+.container {
+  max-width: 1400px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 32px;
+  margin-bottom: 1em;
+  font-weight: bold;  
+}
+
+.cards {
+  display: flex;
+  padding: 25px 0px;
+  list-style: none;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 100%;
+  padding: 20px;
+  background: var(--whitealpha);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+  scroll-snap-align: start;
+  transition: all 0.2s;
+}
+
+.card:not(:last-child) {
+  margin-right: 10px;
+}
+
+.card:hover {
+  color: var(--white);
+  background: var(--blue);
+}
+
+.card .card-title {
+  font-size: 20px;
+}
+
+.card .card-content {
+  margin: 20px 0;
+  max-width: 85%;
+}
+
+.card .card-link-wrapper {
+  margin-top: auto;
+}
+
+.card .card-link {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background: var(--blue);
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.card:hover .card-link {
+  background: var(--purple);
+}
+
+.cards::-webkit-scrollbar {
+  height: 12px;
+}
+
+.cards::-webkit-scrollbar-thumb,
+.cards::-webkit-scrollbar-track {
+  border-radius: 92px;
+}
+
+.cards::-webkit-scrollbar-thumb {
+  background: var(--purple);
+}
+
+.cards::-webkit-scrollbar-track {
+  background: var(--thumb);
+}
+
+@media (min-width: 500px) {
+  .card {
+    flex-basis: calc(50% - 10px);
   }
-  table {
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
+
+  .card:not(:last-child) {
+    margin-right: 20px;
   }
-  body {
-    margin: 0;
-    background: linear-gradient(to right, rgb(89, 89, 213) 45%, rgb(194, 74, 74) 55%);
-    height:100vh;
-    color:#fff;
+}
+
+@media (min-width: 700px) {
+  .card {
+    flex-basis: calc(calc(100% / 3) - 20px);
   }
-  </style>
+
+  .card:not(:last-child) {
+    margin-right: 30px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .card {
+    flex-basis: calc(25% - 30px);
+  }
+
+  .card:not(:last-child) {
+    margin-right: 40px;
+  }
+}
+</style>
+
+
+  <div class="container">
+    <h2>Welcome, <span style="color: var(--blue);">{{ request.user }}</span></h2>
+    <br>
+    <h4 style="font-weight: bold;">Tasks:</h4>
+    <ul class="cards">
+      {% for task in list_todolist %}
+        <li class="card">
+          <div>
+            <h3 class="card-title">{{ task.title }}</h3>
+            <h6 class="card-date">{{ task.date }}</h6>
+            {% if task.is_finished %}
+              <h6 style="font-weight: bold; color: green">DONE</h6>
+            {% else %}
+              <h6 style="font-weight: bold; color: red">NOT DONE</h6>
+            {% endif %}
+              <div class="card-content">
+              <p>{{ task.description }}</p>
+            </div>
+          </div>
+          <div class="card-link-wrapper">
+            <form action="{% url 'todolist:toggle_task' id=task.id %}" method="post">
+              {% csrf_token %}
+              <button style="float: left; margin-right: 4px;"class="btn btn-success" type="submit" ><i class="btn-success"></i>Toggle</button>
+            </form>
+            <form action="{% url 'todolist:delete_task' id=task.id %}" method="post">
+              {% csrf_token %}
+              <button style="margin-left: 4px;" class="btn btn-danger" type="submit" ><i class="btn-danger"></i>Delete</button>
+           </form>
+          
+          </div>
+        </li>
+      {% endfor %}
+      </ul>
+      
+  </div>
 
   <br>
-  <h1>To-Do List</h1>
-
-  <br>
-  <h5>Logged in as: </h5>
-  <p>{{ user.get_username }}</p>
-
-  <div class="container">   
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Status</th>
-      <th>Toggle</th>
-      <th>Remove Task</th>
-    </tr>
-    {% comment %} Add the data below this line {% endcomment %}
-    {% for task in list_todolist %}
-    <tr>
-        <th>{{ task.date }}</th>
-        <th>{{ task.title }}</th>
-        <th>{{ task.description }}</th>
-        {% if task.is_finished == False %}
-        <th>Belum Selesai</th>
-        {% else %}
-        <th>Selesai</th>
-        {% endif %}
-        <form action="{% url 'todolist:toggle_task' id=task.id %}" method="post">
-          {% csrf_token %}
-          <th><button class="btn btn-success" type="submit" ><i class="btn-success"></i>Toggle</button></th>
-        </form>
-        <!-- <th><button><a href="{% url 'todolist:toggle_task' id=task.id %}">Toggle</a></button></th> -->
-        <form action="{% url 'todolist:delete_task' id=task.id %}" method="post">
-          {% csrf_token %}
-          <th><button class="btn btn-danger" type="submit" ><i class="btn-danger"></i>Delete</button></th>
-       </form>
-    </tr>
-    {% endfor %}    
-  </table>
-  <br>
-
-  <button><a href="{% url 'todolist:create_task' %}">Tambah Task Baru</a></button>
-  <button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+ 
+  <div class="col-md-12 text-center">
+    <button type="button" class="btn btn-success"><a href="{% url 'todolist:create_task' %}">Create New Task</a></button>
+       
+    <button type="button" class="btn btn-primary"><a href="{% url 'todolist:logout' %}">Logout</a></button>
+  </div>
+    
   <br>
   <br>
-  <h5>Sesi terakhir login: {{ last_login }}</h5>
-
-  </div> 
+  <h5 style="font-size: smaller;">Last login session: {{ last_login }}</h5>
 
  {% endblock content %}

@@ -6,32 +6,105 @@
 
 {% block content %}
 
-<div>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js%22%3E"></script>
 
-    <h1>Tambah Task</h1>
+<style>
 
+    table {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h1, td, p, li {
+        align-items: center;
+        text-align: center;
+        color: white;
+    }
+
+    p {
+        font-weight: bold;
+    }
+
+    tr.spaceUnder {
+        padding-bottom: 0.25em;
+    }
+
+    tr.spaceUnderField>td {
+        padding-bottom: 0.4em;
+
+    }
+
+    .newtask {
+        background: rgba(0,0,0,0.5);
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: auto;
+        margin: auto;
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+        border-radius: 25px;
+        width: 450px;
+        height: 575px;
+        padding: 25px;
+        
+    }
+
+    .newtask:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.75);
+    }
+
+    #logincard {
+        border-radius: 25px;
+        background: rgba(0,0,0,0.5);
+        padding: 25px; 
+        width: 360px;
+        height: 420px;  
+    }
+
+    #message {
+        color: rgb(255, 202, 103)
+    }
+
+</style>
+
+<br>
+
+<div class="newtask" id="newtask">
+    
+    <h1>Create New Task</h1>
+    
     <form method="POST" action="">
         {% csrf_token %}
         <table>
-            <tr>
-                <td>Title: </td>
+            <p>Title:</p>
+            
                 <td>{{ form.title }}</td>
             </tr>
-                    
-            <tr>
-                <td>Description: </td>
+        </table>
+        <br>
+        <table>
+            <p>Description:</p>
+            <tr class="spaceUnder"> 
+               
                 <td>{{ form.description }}</td>
-
             </tr>
-
+        </table>
+        <table>
             <tr>
-                <td></td>
-                <td><input class="save btn btn-default" type="submit" value="Tambah Task"></td>
+                <br>
+                <td><input class="save btn btn-success" type="submit" value="Add Task"></td>
             </tr>
         </table>
 
     </form>
 
 </div>
+
 
 {% endblock content %}

@@ -6,28 +6,151 @@
 
 {% block content %}  
 
-<div class = "login">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js%22%3E"></script>
+
+<style>
+
+    table {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h1, tr, p {
+        text-align: center;
+        color: white;
+    }
+    tr.spaceUnderLogin>td {
+        padding-bottom: 1em;
+    }
+
+    tr.spaceUnder>td {
+        padding-bottom: 0.25em;
+    }
+
+    .register {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: auto;
+        margin: auto;
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        border-radius: 25px;
+        
+    }
+
+    .prompt {
+        text-align: left;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .prompt-text {
+        color: rgb(255, 202, 103);
+    }
+
+    tr.register-bt>td {
+        padding-top: 3em;
+    }
+
+    .register:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.75);
+    }
+
+    #registercard {
+        border-radius: 25px;
+        background: rgba(0,0,0,0.5);
+        padding: 25px; 
+        width: 750px;
+        height: 500px;  
+    }
+
+    #message {
+        color: rgb(255, 202, 103)
+    }
+
+    #error-message {
+        color: rgb(250, 105, 92)
+    }
+
+</style>
+
+<div class = "register" id="registercard">
     
-    <h1>Formulir Registrasi</h1>  
+    <h1>Register</h1> 
+    <br> 
 
         <form method="POST" >  
             {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
+            <table style="width: 50%;">  
+
+                <td>
+                    <tr class="prompt">
+                        <td>Username: <span class="prompt-text">150 characters or fewer. Letters, digits, and @/./+/-/_ only.</span></td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+                    </tr>
+                    {% if form.username.errors %}
+                        <tr>
+                        {% for message in form.username.errors %}
+                            <td id="error-message">{{ message }}</td> 
+                        {% endfor %}
+                        </tr>
+                    {% else %}
+                    <tr>
+                        <td> <p></p></td>
+                    </tr>
+                    {% endif %}
+                    <tr class="prompt">
+                        <td>Enter Password: <span class="prompt-text">At least 8 characters. Can't be entirely numeric.</span></td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><input type="password" name="password1" placeholder="Password" class="form-control"></td>
+                    </tr>
+                    {% if form.password1.errors %}
+                        <tr>
+                        {% for message in form.password1.errors %}
+                            <td id="error-message">{{ message }}</td>
+                        {% endfor %}
+                        </tr>   
+                    {% else %}
+                    <tr>
+                        <td> <p></p></td>
+                    </tr>
+                    {% endif %}
+                    <tr class="prompt">
+                        <td>Confirm Password:</td>
+                    </tr>
+                    <tr class="spaceUnder">
+                        <td><input type="password" name="password2" placeholder="Confirm Password" class="form-control"></td>
+                    </tr>
+                    {% if form.password2.errors %}
+                    <tr>
+                        {% for message in form.password2.errors %}
+                            <td id="error-message">{{ message }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td><p></p></td>
+                    </tr>
+                    {% endif %}
+                </td>
+                
+                <tr class="register-bt">  
+                    <td><input class="btn btn-success" type="submit" value="Register"></td>  
                 </tr>  
             </table>  
         </form>
 
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
+
 
 </div>  
 
