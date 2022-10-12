@@ -1,4 +1,4 @@
-# README
+# README 4
 
 ### Link Aplikasi Heroku: [Todolist](http://pbp-assignment4.herokuapp.com/todolist/)
 
@@ -32,4 +32,120 @@ Dari submisi ```<form>``` pada field yang sudah diberi nama, data lalu dipanggil
 
 
 
+# README 5
+
+## 1. Inline, Internal, dan External CSS
+
+Inline CSS merupakan metode untuk menerapkan styling pada elemen-elemen HTML dengan memberikan
+style ke tag HTML tertentu menggunakan ```<style>``` yang dituliskan di dalam file HTMLnya juga.
+Penggunaan Inline CSS bermanfaat jika kita ingin mencoba-coba perubahan dalam skala kecil serta
+juga untuk memperbaiki suatu kesalahan pada styling dengan cepat. Selain itu, request yang dibuat
+untuk mengakses halaman dengan Inline CSS juga lebih kecil. Walaupun begitu, Inline CSS kurang 
+efektif karena harus diterapkan untuk setiap elemen satu per satu.
+
+Internal CSS merupakan penerapan styling mirip seperti Inline CSS, namun untuk kode CSSnya diletakkan
+dalam tag ```<head>``` halaman HTML yang dimodifikasi. Intenal CSS berguna jika kita hanya ingin 
+merubah sesuatu yang ada di spesifik suatu halaman. Internal CSS juga memiliki kelebihan dimana
+Class dan ID bisa digunakan oleh internal stylesheet dan juga kita tidak perlu meng-upload 
+berbagai macam file untuk styling karena styling digunakan di dalam halaman yang sama.
+Metode styling ini juga memiliki kekurangan, yaitu akan meningkatkan waktu akses ke halaman dan
+juga perubahan yang dibuat hanya akan berlaku di halaman dimana styling dibuat, sehingga tidak
+efektif jika ada elemen yang perubahannya seharusnya berlaku untuk setiap halaman.
+
+External CSS, best practice untuk styling, merupakan metode dimana stylesheet untuk suatu halaman
+diletakkan di file .CSS external, tidak di dalam file HTMLnya. Untuk menerapkan style yang sudah
+dibuat dalam file .CSS, file .CSS external ditulis dalam bagian <head> dari HTML. Metode ini merupakan
+best practice karena ukuran file HTML menjadi lebih kecil, loading halaman menjadi lebih cepat, 
+serta juga style yang dibuat pada CSS bersifat reusable untuk halaman-halaman lainnya. Namun, 
+halaman yang menggunakan external CSS hanya akan tampil secara sempurna ketika file .CSSnya 
+selesai dipanggil.
+
+
+## 2. Tag pada HTML
+
+- ```<table>```: untuk membuat table yang dapat diisi data yang ingin ditampilkan
+- ```<th>```: header untuk sebuah cell dalam table
+- ```<tr>```: untuk membuat baris dalam sebuah table
+- ```<td>```: untuk membuat cell dalam table
+- ```<h1>-<h6>```: header untuk teks
+- ```<form>```: untuk membuat sebuah form yang didalamnya terdapat kode yang mengambil sebuah input
+- ```<button>```: untuk membuat sebuah tombol yang dapat diinteraksikan oleh user
+- ```<style>```: untuk mendefinisikan styling yang digunakan halaman (CSS)
+- ```<a>```: membuat sebuah hyperlink
+
+
+## 3. Selector-selector CSS
+
+- ```.<nama class>```: akan menerapkan styling untuk setiap elemen yang memiliki class sesuai nama
+- ```#<id elemen>```: menerapkan styling ke elemen yang memiliki id sesuai nama
+- ```*:``` akan menerapkan styling ke setiap elemen
+- ```element1>element2:``` menerapkan styling ke elemen2 yang memiliki parent elemen1
+- ```:first-child:``` menerapkan styling ke elemen yang merupakan elemen child pertama dari parent elemennya
+- ```:hover:``` menerapkan styling yang aktif ketika cursor berada diatas elemen
+- ```:link:``` menerapkan styling kepada semua link yang belum dibuka user
+- ```:visited:``` menerapkan styling kepada semua link yang sudah dibuka user
+
+
+## 4. Proses pengimplementasian app
+
+Untuk app ini, dilakukan styling pada template-template yang digunakan oleh aplikasi. Styling yang digunakan pada app ini berfokus kepada container dengan class _cards_, dimana contoh pengimplementasiannya salah satunya terdapat pada file ```todolist.html``` seperti berikut:
+
+```
+...
+<div class="container">
+    <h2>Welcome, <span style="color: var(--blue);">{{ request.user }}</span></h2>
+    <br>
+    <h4 style="font-weight: bold;">Tasks:</h4>
+    <ul class="cards">
+      {% for task in list_todolist %}
+        <li class="card">
+          <div>
+            <h3 class="card-title">{{ task.title }}</h3>
+            <h6 class="card-date">{{ task.date }}</h6>
+            {% if task.is_finished %}
+              <h6 style="font-weight: bold; color: green">DONE</h6>
+            {% else %}
+              <h6 style="font-weight: bold; color: red">NOT DONE</h6>
+            {% endif %}
+              <div class="card-content">
+              <p>{{ task.description }}</p>
+            </div>
+          </div>
+          <div class="card-link-wrapper">
+            <form action="{% url 'todolist:toggle_task' id=task.id %}" method="post">
+              {% csrf_token %}
+              <button style="float: left; margin-right: 4px;"class="btn btn-success" type="submit" ><i class="btn-success"></i>Toggle</button>
+            </form>
+            <form action="{% url 'todolist:delete_task' id=task.id %}" method="post">
+              {% csrf_token %}
+              <button style="margin-left: 4px;" class="btn btn-danger" type="submit" ><i class="btn-danger"></i>Delete</button>
+           </form>
+          
+          </div>
+        </li>
+      {% endfor %}
+      </ul>
+      
+  </div>
+  ...
+  ```
+  
+  Potongan kode diatas akan mengiterasi tiap objek Task dan akan memasukkan _field-field_ nya ke dalam container dengan class _cards_, dimana class tersebut memungkinkan container untuk dimodifikasi sekreatif mungkin. Contoh salah satu modifikasi yang dapat dilakukan pada _cards_ untuk membuatnya menjadi responsive adalah dengan ```:hover```, yang membuat _card_ menjadi responsive ketika cursor user berada diatas elemen _card_ tersebut. Respon _card_ dapat berupa munculnya bayangan, berubahnya warna, dan lain-lain. Contoh pengimplementasian yang saya gunakan untuk membuat _card_ menjadi responsive adalah dengan mengganti warnanya ketika cursor berada pada _card_ dengan:
+  
+  ```
+  .card:hover {
+  color: var(--white);
+  background: var(--blue);
+}
+```
+
+Selain itu, masih banyak lagi modifikasi yang dapat dilakukan terhadap _cards_ tadi. Namun secara garis besar, tugas ini dapat diselesaikan dengan mengimplementasikan _cards_ sesuai contoh diatas dan menyesuaikan isinya dengan elemen-elemen yang ingin ditampilkan kepada user serta modifikasi-modifikasinya yang memanfaatkan class dan juga id dari sebuah elemen serta berbagai macam selector juga yang dapat diletakkan dalam file dengan ```<style>``` atau juga menggunakan file CSS eksternal seperti yang telah dijelaskan pada no. 1.
+
+
+##### source:
+##### https://www.hostinger.co.id/tutorial/perbedaan-inline-css-external-css-dan-internal-css
+##### https://www.tutorialrepublic.com/html-reference/html5-tags.php
+##### https://www.w3schools.com/cssref/css_selectors.asp
+##### https://webdesign.tutsplus.com/tutorials/horizontal-scrolling-card-ui-flexbox-and-css-grid--cms-41922
+    
 ##### _Rayhan Putra Randi | 2106705644 | PBP-A_
