@@ -1,3 +1,4 @@
+from http.client import HTTPResponse
 from todolist.models import Task
 
 from django.shortcuts import render, redirect
@@ -5,9 +6,11 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.core import serializers
+
 
 import datetime
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound
 from django.urls import reverse
 
 from .forms import TaskForm
@@ -23,6 +26,12 @@ def show_todolist(request):
         'list_todolist': data_todolist,
     }
     return render(request, 'todolist.html', context)
+
+@login_required(login_url='/todolist/login/')
+def show_todolist_json(request):
+    user = request.user
+    data_todolist = serializers.serialize("json", Task.objects.filter(user=user))
+    return HttpResponse(data_todolist, content_type="application/json")
 
 def task_delete(request, id):
     task = Task.objects.get(id=id)
@@ -77,9 +86,19 @@ def create_task(request): ####
             task.save()
             response = HttpResponseRedirect(reverse("todolist:show_todolist"))
             return response
-
     context = {'form': form}
     return render(request, 'create_task.html', context)
+
+    # if request.method == 'POST':
+    #     user = request.user
+    #     title = request.POST.get("title")
+    #     description = request.POST.get("description")
+
+    #     new_task = Task(user=user, title=title, description=description)
+    #     new_task.save()
+
+    #     return HttpResponse(b"CREATED", status=201)
+    # return HttpResponseNotFound()
 
 def logout_user(request):
     logout(request)
